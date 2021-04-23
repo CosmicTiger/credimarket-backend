@@ -1,0 +1,39 @@
+{
+    "name": "credimarket-backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "start": "node ./app.js",
+        "dev": "nodemon",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/CosmicTiger/credimarket-backend"
+    },
+    "author": "CosmicTiger | luisangelmarcia@gmail.com",
+    "license": "MIT",
+    "dependencies": {
+        "@sideway/address": "^4.1.1",
+        "@sideway/formula": "^3.0.0",
+        "@sideway/pinpoint": "^2.0.0",
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "crypto-js": "^4.0.0",
+        "express": "^4.17.1",
+        "helmet": "^4.5.0",
+        "joi": "^17.4.0",
+        "jsonwebtoken": "^8.5.1",
+        "moment": "^2.29.1",
+        "morgan": "^1.10.0",
+        "mysql2": "^2.2.5",
+        "nodemon": "^2.0.7",
+        "public-ip": "^4.0.3",
+        "sequelize": "^6.6.2",
+        "simple-node-logger": "^18.12.24"
+    },
+    "devDependencies": {
+        "dotenv": "^8.2.0"
+    }
+}
