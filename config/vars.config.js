@@ -7,6 +7,7 @@ module.exports = {
     PORT: process.env.PORT || 8080,
     PASSWORD_SECRET: process.env.PASSWORDSECRET || 'secret',
     JWT_SECRET: process.env.JWTSECRET || 'secret',
+    JWT_SECRET_ADMIN: process.env.JWTSECRETADMIN || 'secret',
     DB: {
         NAME: process.env.DBNAME,
         HOST: process.env.DBHOST || 'localhost',
