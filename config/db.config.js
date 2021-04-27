@@ -11,7 +11,7 @@ const { DB: dbConfig } = require('./vars.config')
  */
 module.exports = new Sequelize(dbConfig.NAME, dbConfig.USERNAME, dbConfig.PASSWORD, {
     host: dbConfig.HOST,
-    dialect: dbConfig.DIALECT
+    dialect: dbConfig.DIALECT,
     logging: false,
     pool: {
         max: 5,

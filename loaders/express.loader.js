@@ -10,7 +10,7 @@ const publicIp = require('public-ip')
  * @param {Express.Route} api - Express App Routes
  * @return {Express} app
  */
-module.exports = async (app, router=[]) => {
+module.exports = async (app, router = []) => {
     // If not app, calcel rest execution
     if (!app) {
         console.log('not app')
@@ -26,10 +26,10 @@ module.exports = async (app, router=[]) => {
     app.use(urlencoded({ extended: false }))
 
     // config routes
-    app.get('/', (_, res) => res.send(await publicIp.v4()))
+    app.get('/', async (_, res) => res.send(await publicIp.v4()))
 
     // define app routes
-    for (let route of routes) {
+    for (let route of router) {
         const { path = null, controller = null } = route
 
         if (path && controller) {

@@ -1,5 +1,6 @@
+'use strict'
 const express = require('express')
-const {} = require('./routes')
+const ApiRoutes = require('./routes')
 const loaders = require('./loaders')
 const { vars, db } = require('./config')
 
@@ -8,7 +9,7 @@ async function startServer() {
 
     await loaders.init({
         expressApp: app,
-        expressRoutes: api,
+        expressRoutes: ApiRoutes,
         sequelizeInstance: db,
     })
 
