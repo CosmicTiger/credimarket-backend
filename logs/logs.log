@@ -1,0 +1,16 @@
+11:46:02.662 ERROR Tue May 25 2021 23:46:02 GMT-0600 (Central Standard Time) | index.js | user.service.js | Error al iniciar sesión de credi usuario | SequelizeDatabaseError: Unknown column 'user_id' in 'field list' 
+11:46:02.662 ERROR Tue May 25 2021 23:46:02 GMT-0600 (Central Standard Time) | index.js | login.controller.js | Ha sucedido un problema con su inició de sesión | [object Object] 
+11:47:38.996 ERROR Tue May 25 2021 23:47:38 GMT-0600 (Central Standard Time) | index.js | login.controller.js | Ha sucedido un problema con su inició de sesión | [object Object] 
+11:47:38.996 ERROR Tue May 25 2021 23:47:38 GMT-0600 (Central Standard Time) | index.js | user.service.js | Error al iniciar sesión de credi usuario | SequelizeDatabaseError: Unknown column 'user_id' in 'field list' 
+15:11:09.591 ERROR Wed May 26 2021 03:11:09 GMT-0600 (Central Standard Time) | index.js | login.controller.js | Ha sucedido un problema con su inició de sesión | [object Object] 
+15:11:09.590 ERROR Wed May 26 2021 03:11:09 GMT-0600 (Central Standard Time) | index.js | user.service.js | Error al iniciar sesión de credi usuario | ReferenceError: userVerifyAuth is not defined 
+15:21:26.310 ERROR Wed May 26 2021 03:21:26 GMT-0600 (Central Standard Time) | index.js | user.service.js | Error al iniciar sesión de credi usuario | SequelizeEagerLoadingError: information_users is not associated to users! 
+15:21:26.310 ERROR Wed May 26 2021 03:21:26 GMT-0600 (Central Standard Time) | index.js | login.controller.js | Ha sucedido un problema con su inició de sesión | [object Object] 
+15:39:51.613 ERROR Wed May 26 2021 03:39:51 GMT-0600 (Central Standard Time) | index.js | user.service.js | Error al iniciar sesión de credi usuario | SequelizeEagerLoadingError: has_info is not associated to users! 
+15:39:58.388 ERROR Wed May 26 2021 03:39:58 GMT-0600 (Central Standard Time) | index.js | login.controller.js | Ha sucedido un problema con su inició de sesión | [object Object] 
+15:44:18.934 ERROR Wed May 26 2021 03:44:18 GMT-0600 (Central Standard Time) | index.js | user.service.js | Error al iniciar sesión de credi usuario | SequelizeDatabaseError: Unknown column 'has_info.has_info_id' in 'field list' 
+15:44:18.937 ERROR Wed May 26 2021 03:44:18 GMT-0600 (Central Standard Time) | index.js | login.controller.js | Ha sucedido un problema con su inició de sesión | [object Object] 
+15:49:00.346 ERROR Wed May 26 2021 03:49:00 GMT-0600 (Central Standard Time) | index.js | user.service.js | Error al iniciar sesión de credi usuario | SequelizeDatabaseError: Unknown column 'user_permission.permission_id' in 'field list' 
+15:49:07.948 ERROR Wed May 26 2021 03:49:07 GMT-0600 (Central Standard Time) | index.js | login.controller.js | Ha sucedido un problema con su inició de sesión | [object Object] 
+15:49:53.130 ERROR Wed May 26 2021 03:49:53 GMT-0600 (Central Standard Time) | index.js | user.service.js | Error al iniciar sesión de credi usuario | SequelizeDatabaseError: Unknown column 'user_permissions.permission_id' in 'field list' 
+15:49:56.299 ERROR Wed May 26 2021 03:49:56 GMT-0600 (Central Standard Time) | index.js | login.controller.js | Ha sucedido un problema con su inició de sesión | [object Object] 

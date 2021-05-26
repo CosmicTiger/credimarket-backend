@@ -19,7 +19,7 @@ UserPermissionsModel.init(
             allowNull: true,
         }
     },
-    { sequelize: db, modelName: 'user_permissions' }
+    { sequelize: db, modelName: 'user_permissions', underscored: true }
 )
 
 module.exports = UserPermissionsModel

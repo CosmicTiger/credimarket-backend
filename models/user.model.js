@@ -20,14 +20,9 @@ UserModel.init(
             type: type.STRING(100),
             allowNull: false,
         },
-        has_email: {
+        has_info_id: {
             type: type.INTEGER(11),
-            allowNull: true,
-        },
-        has_phone: {
-            type: type.INTEGER(11),
-            allowNull: true,
-            defaultValue: 1,
+            allowNull: false,
         },
         permission_id: {
             type: type.INTEGER(11),
@@ -52,7 +47,7 @@ UserModel.init(
             allowNull: true,
         }
     },
-    { sequelize: db, modelName: 'users' }
+    { sequelize: db, modelName: 'users', underscored: true }
 )
 
 module.exports = UserModel

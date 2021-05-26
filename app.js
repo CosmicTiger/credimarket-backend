@@ -1,11 +1,13 @@
 'use strict'
-const express = require('express')
+
+// Import vars and constants
 const ApiRoutes = require('./routes')
 const loaders = require('./loaders')
-const { vars, db } = require('./config')
+const { constants, db, vars } = require('./config')
 
 async function startServer() {
-    const app = express()
+    const { app, NOW } = constants
+    const { PORT } = vars
 
     await loaders.init({
         expressApp: app,
@@ -19,7 +21,7 @@ async function startServer() {
             return
         }
 
-        console.log(`Server running at port: ${vars.PORT}`)
+        console.log(`${NOW()} | Server running at port: ${PORT}`)
     })
 }
 

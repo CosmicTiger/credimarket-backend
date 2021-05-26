@@ -19,7 +19,7 @@ HasInfoModel.init(
             allowNull: true,
         }
     },
-    { sequelize: db, modelName: 'has_info' }
+    { sequelize: db, modelName: 'has_info', underscored: true }
 )
 
 module.exports = HasInfoModel

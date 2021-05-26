@@ -11,12 +11,16 @@ UserAddressModel.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        address_id: {
+        user_id: {
             type: type.INTEGER(11),
             allowNull: false,
         },
         status_id: {
             type: type.INTEGER(11),
+            allowNull: false,
+        },
+        personal_reference: {
+            type: type.STRING(250),
             allowNull: false,
         },
         created_at: {
@@ -34,7 +38,7 @@ UserAddressModel.init(
             allowNull: true,
         }
     },
-    { sequelize: db, modelName: 'user_address' }
+    { sequelize: db, modelName: 'user_address', underscored: true }
 )
 
 module.exports = UserAddressModel
