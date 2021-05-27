@@ -27,9 +27,9 @@ const registerUser = function (body) {
                 }),
             password: Joi.string()
                 .exist()
-                .min(12)
+                .min(8)
                 .max(24) // new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})")
-                .pattern(new RegExp('^[a-zA-Z0-9,(),-_.,@$%^/\`!?¿¡]{12,24}$')) // (?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}
+                .pattern(new RegExp('^[a-zA-Z0-9,(),-_.,@$%^/\`!?¿¡]{8,24}$')) // (?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}
                 .required()
                 .messages({
                     'string.base': 'Ingrese su contraseña',

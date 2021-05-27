@@ -1,5 +1,5 @@
 const Joi = require('joi')
-const { validationErrorMessage } = require('../utils')
+const { validatorErrorMessage } = require('../utils')
 
 const loginUser = function (body) {
     return new Promise((resolve, reject) => {
@@ -48,7 +48,7 @@ const loginUser = function (body) {
 
         if (error) {
             reject(
-                validationErrorMessage(error)
+                validatorErrorMessage(error)
             )
         }
 

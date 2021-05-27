@@ -96,7 +96,8 @@ UserService.registerAdmin = function ({
             }
 
             resolve({
-                response: 'success'
+                response: 'success',
+                message: 'Su credi usuario administrador ha sido creado con éxito'
             })
 
         } catch (error) {
@@ -145,7 +146,6 @@ UserService.login = function ({
                 attributes: [
                     'id',
                     'username',
-                    'password',
                     [col('information_user.first_name'), 'first_name'],
                     [col('information_user.mid_name'), 'mid_name'],
                     [col('information_user.last_name'), 'last_name'],
@@ -154,8 +154,8 @@ UserService.login = function ({
                     [col('information_user.email'), 'email'],
                     [col('information_user.phone'), 'phone'],
                     [col('user_addresses.personal_reference'), 'address'],
-                    [col('user_permission.name'), 'role'],
-                    [col('has_info.name'), 'info_type']
+                    [col('user_permission.id'), 'role'],
+                    [col('has_info.id'), 'info_type']
                 ],
                 raw: true,
                 nest: true,
@@ -176,7 +176,7 @@ UserService.login = function ({
                     }
                     else {
                         resolve({
-                            ..._.omit(data, 'password'),
+                            ...data,
                             token,
                         })
                     }
