@@ -57,12 +57,12 @@ InformationUsersModel.init(
             allowNull: true,
             defaultValue: NOW(),
         },
-        delete_at: {
+        disabled_at: {
             type: type.DATE,
             allowNull: true,
         }
     },
-    { sequelize: db, modelName: 'information_users' }
+    { sequelize: db, modelName: 'information_users', underscored: true }
 )
 
 module.exports = InformationUsersModel

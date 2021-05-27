@@ -1,6 +1,6 @@
 const path = require("path")
 const jwt = require("jsonwebtoken")
-const log = require("../logs")
+const log = require("../config/logs.config")
 
 /**
  * @author CosmicTiger - Luisangel Marcia

@@ -1,8 +1,8 @@
-const { urlencoded } = require('express')
-const bodyParser = require('body-parser')
+const { urlencoded, json } = require('express')
 const cors = require('cors')
 const helmet = require('helmet')
 const publicIp = require('public-ip')
+const { morganDeployment } = require('../config/constants.config')
 
 /**
  * Configure a express instance
@@ -12,7 +12,7 @@ const publicIp = require('public-ip')
  */
 module.exports = async (app, router = []) => {
     // If not app, calcel rest execution
-    if (!app) {
+    if (!app || !Array.isArray(router)) {
         console.log('not app')
         return null
     }
@@ -22,8 +22,12 @@ module.exports = async (app, router = []) => {
     // config middlewares
     app.use(helmet())
     app.use(cors({ origin: '*' }))
-    app.use(bodyParser.json())
-    app.use(urlencoded({ extended: false }))
+
+    // User for parse get json petition
+    app.use(json())
+    app.use(urlencoded({ extended: true }))
+
+    morganDeployment()
 
     // config routes
     app.get('/', async (_, res) => res.send(await publicIp.v4()))

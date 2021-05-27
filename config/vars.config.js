@@ -1,18 +1,31 @@
 const dotenv = require('dotenv')
+const DBDIALECT = 'mysql'
 
 // loading vars from .env
-dotenv.config()
+if (process.env.NODE_ENV !== 'production') dotenv.config()
+
+const {
+    DBHOST,
+    DBNAME,
+    DBPASSWORD,
+    DBUSERNAME,
+    JWTSECRET,
+    JWTSECRETADMIN,
+    PASSWORDSECRET,
+    PORT,
+} = process.env
 
 module.exports = {
-    PORT: process.env.PORT || 8080,
-    PASSWORD_SECRET: process.env.PASSWORDSECRET || 'secret',
-    JWT_SECRET: process.env.JWTSECRET || 'secret',
-    JWT_SECRET_ADMIN: process.env.JWTSECRETADMIN || 'secret',
+    PORT: PORT || 8080,
+    PASSWORD_SECRET: PASSWORDSECRET || 'secret',
+    JWT_SECRET: JWTSECRET || 'secret',
+    JWT_SECRET_ADMIN: JWTSECRETADMIN || 'secret',
     DB: {
-        NAME: process.env.DBNAME,
-        HOST: process.env.DBHOST || 'localhost',
-        USERNAME: process.env.DBUSERNAME,
-        PASSWORD: process.env.DBPASSWORD,
-        DIALECT: process.env.DBDIALECT || 'mysql',
+        NAME: DBNAME,
+        HOST: DBHOST || 'localhost',
+        USERNAME: DBUSERNAME,
+        PASSWORD: DBPASSWORD,
+        DIALECT: DBDIALECT || 'mysql',
     },
+    PRODUCTION: process.env.NODE_ENV === 'production',
 }
