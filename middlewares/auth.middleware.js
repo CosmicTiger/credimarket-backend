@@ -1,6 +1,16 @@
+// auth.middleware.js
 const log = require('../config/logs.config')
 
-const { decrypt } = require()
+const {
+    decodeUserToken,
+    decodeAdminToken,
+    decodeMixedToken
+} = require('../config/constants.config')
+
+const {
+    JWT_SECRET_ADMIN,
+    JWT_SECRET
+} = require('../config/vars.config')
 
 module.exports = {
     auth: async (req, res, next) => {
@@ -10,7 +20,7 @@ module.exports = {
             req.user = await decodeUserToken(token)
             next()
         } catch (error) {
-            log(`auth.js - error en token de autenticación | ${error}`)
+            log(`auth.middleware.js - error en token de autenticación | ${error}`)
 
             return res.status(401).json({
                 error: true,
@@ -23,10 +33,10 @@ module.exports = {
         const token = req.header('x-auth-token')
 
         try {
-            req.user = await decodeUserToken(token)
+            req.user = await decodeAdminToken(token)
             next()
         } catch (error) {
-            log(`auth.js - error en token de autenticación | ${error}`)
+            log(`auth.middleware.js - error en token de autenticación | ${error}`)
 
             return res.status(401).json({
                 error: true,

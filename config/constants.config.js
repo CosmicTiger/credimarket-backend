@@ -1093,8 +1093,43 @@ const baseDecodeToken = (token, key) =>
 const decodeUserToken = accessToken =>
     new Promise(async (resolve, reject) => {
         try {
-            const decodeToken = await baseDecodeToken(accessToken,)
+            const decodeToken = await baseDecodeToken(accessToken, JWT_SECRET)
             resolve(decodeToken)
+        } catch (error) {
+            reject(error)
+        }
+    })
+
+const decodeAdminToken = accessToken =>
+    new Promise(async (resolve, reject) => {
+        try {
+            const decodeToken = await baseDecodeToken(accessToken, JWT_SECRET_ADMIN)
+            resolve(decodeToken)
+        } catch (error) {
+            reject(error)
+        }
+    })
+
+const decodeMixedToken = (...decodePromise) =>
+    new Promise(async (resolve, reject) => {
+        try {
+            const promises = decodePromises.map(promise =>
+                promise
+                    .then(decoded => ({ status: 'resolved', decoded }))
+                    .catch(_ => ({ status: 'rejected', decoded: null }))
+            )
+
+            const result = await Promise.all(promises)
+
+            const resolvedPromises = result.filter(
+                item => item.status === 'resolved'
+            )
+
+            if (resolvedPromises.length === 0) {
+                throw String('Token mixto inválido')
+            }
+
+            resolve(resolvedPromises[0].decoded)
         } catch (error) {
             reject(error)
         }
@@ -1118,6 +1153,8 @@ const morganDeployment = () => {
 module.exports = {
     app,
     decodeUserToken,
+    decodeAdminToken,
+    decodeMixedToken,
     decodeNumber,
     EMAILS,
     encodeToNumber,
