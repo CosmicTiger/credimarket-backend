@@ -15,6 +15,14 @@ const {
     PORT,
 } = process.env
 
+const CREDIMARKET_ROLES = {
+    ROOT: 1,
+    ADMIN: 2,
+    MANAGER: 3,
+    SUPERVISOR: 4,
+    LENDER: 5
+}
+
 module.exports = {
     PORT: PORT || 8080,
     PASSWORD_SECRET: PASSWORDSECRET || 'secret',
@@ -28,4 +36,5 @@ module.exports = {
         DIALECT: DBDIALECT || 'mysql',
     },
     PRODUCTION: process.env.NODE_ENV === 'production',
+    CREDIMARKET_ROLES
 }
