@@ -1,10 +1,17 @@
-const moment = require('moment')
+// constants.config.js
+// Import express
 const express = require('express')
+
+// Import 3rd party libraries
+const moment = require('moment')
 const morgan = require('morgan')
 const http = require('http')
+
+// Import middlewares
 const jwt = require('jsonwebtoken')
 const { SHA256: cryptoPassword } = require('crypto-js')
 
+// Imports vars.config
 const {
     JWT_SECRET,
     JWT_SECRET_ADMIN,
@@ -12,7 +19,11 @@ const {
 } = require('./vars.config')
 
 /**
- * Constante que retorna la hora del servidor con la diferencia entre hora UTC y la hora local
+ * @author CosmicTiger - Luisangel Marcia
+ * @description Constant that returns the
+ * server hour with the difference
+ * between UTC hour and local hour
+ * @return {Date} timePast
  */
 const NOW = () => {
     const now = new Date()
@@ -1083,6 +1094,13 @@ const baseDecodeToken = (token, key) =>
                 throw String('Token id es requerido')
             }
 
+            jwt.verify(token, key, (err, decode) => {
+                if (err) {
+                    throw err
+                }
+
+                resolve(decode)
+            })
 
         } catch (error) {
             console.log(`token decode error: ${error}`)
@@ -1110,7 +1128,7 @@ const decodeAdminToken = accessToken =>
         }
     })
 
-const decodeMixedToken = (...decodePromise) =>
+const decodeMixedToken = (...decodePromises) =>
     new Promise(async (resolve, reject) => {
         try {
             const promises = decodePromises.map(promise =>

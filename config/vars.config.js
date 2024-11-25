@@ -1,17 +1,17 @@
 const dotenv = require('dotenv')
-const DBDIALECT = 'mysql'
+const DB_DIALECT = 'mysql'
 
 // loading vars from .env
 if (process.env.NODE_ENV !== 'production') dotenv.config()
 
 const {
-    DBHOST,
-    DBNAME,
-    DBPASSWORD,
-    DBUSERNAME,
-    JWTSECRET,
-    JWTSECRETADMIN,
-    PASSWORDSECRET,
+    DB_HOST,
+    DB_NAME,
+    DB_PASSWORD,
+    DB_USERNAME,
+    JWT_SECRET,
+    JWT_SECRET_ADMIN,
+    PASSWORD_SECRET,
     PORT,
 } = process.env
 
@@ -25,15 +25,15 @@ const CREDIMARKET_ROLES = {
 
 module.exports = {
     PORT: PORT || 8080,
-    PASSWORD_SECRET: PASSWORDSECRET || 'secret',
-    JWT_SECRET: JWTSECRET || 'secret',
-    JWT_SECRET_ADMIN: JWTSECRETADMIN || 'secret',
+    PASSWORD_SECRET: PASSWORD_SECRET || 'secret',
+    JWT_SECRET: JWT_SECRET || 'secret',
+    JWT_SECRET_ADMIN: JWT_SECRET_ADMIN || 'secret',
     DB: {
-        NAME: DBNAME,
-        HOST: DBHOST || 'localhost',
-        USERNAME: DBUSERNAME,
-        PASSWORD: DBPASSWORD,
-        DIALECT: DBDIALECT || 'mysql',
+        NAME: DB_NAME,
+        HOST: DB_HOST || 'localhost',
+        USERNAME: DB_USERNAME,
+        PASSWORD: DB_PASSWORD,
+        DIALECT: DB_DIALECT || 'mysql',
     },
     PRODUCTION: process.env.NODE_ENV === 'production',
     CREDIMARKET_ROLES

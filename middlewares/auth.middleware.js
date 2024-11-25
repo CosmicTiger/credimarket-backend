@@ -7,11 +7,6 @@ const {
     decodeMixedToken
 } = require('../config/constants.config')
 
-const {
-    JWT_SECRET_ADMIN,
-    JWT_SECRET
-} = require('../config/vars.config')
-
 module.exports = {
     auth: async (req, res, next) => {
         const token = req.header('x-auth-token')
@@ -43,5 +38,23 @@ module.exports = {
                 message: error.toString(),
             })
         }
-    }
+    },
+    authMixedUser: async (req, res, next) => {
+        const token = req.header('x-auth-token')
+        try {
+            req.user = await decodeMixedToken(
+                decodeAdminToken(token),
+                decodeUserToken(token)
+            )
+
+            next()
+        } catch (message) {
+            log(`auth.js | error in mixed user auth | ${message}`)
+
+            return res.status(401).json({
+                error: true,
+                message,
+            })
+        }
+    },
 }

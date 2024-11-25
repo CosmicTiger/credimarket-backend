@@ -7,28 +7,80 @@ const router = express.Router()
 const { errorResponse } = require('../utils')
 
 // Validator functions
-// const { createClient, updateClient, disableClient } = require('../validators')
+const { ClientsValidator } = require('../validators')
 
 // Imports services
-const { ClientService } = require('../services')
+const { ClientsService } = require('../services')
 
 const postCreateClient = [
     async (req, res) => {
         try {
+            const {
+                sysCode,
+                firstName,
+                midName,
+                lastName,
+                secondaryLastName,
+                nationalId,
+                phone,
+                address,
+            } = req.body
+
+            const clientRegistrationToValidate = await ClientsValidator.createClient({
+                sysCode,
+                firstName,
+                midName,
+                lastName,
+                secondaryLastName,
+                nationalId,
+                phone,
+                address,
+            })
+
+            const clientToRegister = {
+                sysCode: clientRegistrationToValidate.sysCode,
+                firstName: clientRegistrationToValidate.firstName,
+                midName: clientRegistrationToValidate.midName || '',
+                lastName: clientRegistrationToValidate.lastName,
+                secondaryLastName: clientRegistrationToValidate.secondaryLastName || '',
+                nationalId: clientRegistrationToValidate.nationalId,
+                phone: clientRegistrationToValidate.phone,
+                address: clientRegistrationToValidate.address,
+            }
+
+            await ClientsService.create(clientToRegister)
+                .then(result => {
+                    res.send(result)
+                })
+                .catch(error => {
+                    res.send(
+                        errorResponse(
+                            'Error al intentar registrar cliente | Servicio de Registro Credi cliente',
+                            error
+                        )
+                    )
+                })
+
+            res.send({
+                response: 'success',
+                clientToRegister
+            })
 
         } catch (message) {
-            errorResponse(
-                'Ha sucedido un problema al crear al credi cliente',
-                message
+            res.send(
+                errorResponse(
+                    'Ha sucedido un problema al crear al credi cliente',
+                    message
+                )
             )
         }
     }
 ]
 
 router
-    .get('/:client_id')
+    .post('/', postCreateClient)
     .get('/all')
-    .post('/')
+    .get('/:client_id')
     .patch('/:client_id')
 
 module.exports = router

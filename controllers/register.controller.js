@@ -67,7 +67,7 @@ const postRegisterUsers = [
                 .catch(error => {
                     res.send(
                         errorResponse(
-                            `Error al intentar registrar usuario | Servicio de Registro usuario`,
+                            'Error al intentar registrar usuario | Servicio de Registro usuario',
                             error
                         )
                     )
